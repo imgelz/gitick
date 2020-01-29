@@ -108,10 +108,10 @@
                         $('#modal').modal('hide');
                         table.draw();
                         Swal.fire(
-  'Good job!',
-  'You clicked the button!',
-  'success'
-)
+                        'Good job!',
+                        'You clicked the button!',
+                        'success'
+                        )
                     },
                     error: function (request, status, error) {
                         console.log(error);
