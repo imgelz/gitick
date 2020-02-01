@@ -41,6 +41,12 @@
               <p>Penjual</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::segment(1) == '/admin/pesan-publik'? 'active':''}}" href="{{url('/admin/pesan-publik')}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>Pesan Publik</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

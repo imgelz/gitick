@@ -26,6 +26,9 @@ Route::get('/about-us', function () {
 Route::get('/contact', function () {
     return view('Frontend.contact');
 });
+
+Route::post('/contact-us', 'ContactController@store');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -44,6 +47,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/kategori','KategoriController@index');
     Route::post('/kategori-store', 'KategoriController@store');
     Route::get('/kategori/{id}/edit', 'KategoriController@edit');
+    Route::get('/pesan-publik', 'ContactController@index');
     Route::get('/profile', function () {
     return view('Backend.Admin.Profil.profil');
 });

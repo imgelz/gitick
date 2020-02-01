@@ -33,21 +33,21 @@
         </div>
         <div class="row block-9">
           <div class="col-md-6 order-md-last pr-md-5">
-            <form action="#">
+            <form id="form-contact">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
+                <input type="text" id="nama" name="nama" class="form-control" placeholder="Your Name">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email">
+                <input type="text" id="email" name="email" class="form-control" placeholder="Your Email">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
+                <input type="text" id="judul" name="judul" class="form-control" placeholder="Subject">
               </div>
               <div class="form-group">
-                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                <textarea name="pesan" id="pesan" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
               </div>
               <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                <input type="submit" id="kirim" value="Send Message" class="btn btn-primary py-3 px-5">
               </div>
             </form>
 
@@ -60,4 +60,51 @@
       </div>
     </section>
 
+@endsection
+
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                }
+            });
+                $('#form-contact').trigger("reset");
+
+            var tambah = $('#form-contact');
+            tambah.on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '/contact-us',
+                    method: 'POST',
+                    data: tambah.serialize(),
+                    success: function (res) {
+                        // Swal.fire({
+                        //     title: 'God Job!',
+                        //     text: 'Send Message Successfully',
+                        //     type: 'success',
+                        //     showConfirmButton: false,
+                        //     timer: 15000
+                        //     })
+                        location.reload();
+                    },
+                    error: function (err) {
+                        console.log(err)
+                        if (err.status == 422) {
+                            console.log(err.responseJSON);
+                            $('#success_message').fadeIn().html(err.responseJSON.message);
+                            console.warn(err.responseJSON.errors);
+                            $.each(err.responseJSON.errors, function (i, error) {
+                                var el = $(document).find('[id="'+i+'"]');
+                                el.after($('<small style="color: red;">'+error[0]+'</small>'));
+                            });
+                        }
+                    }
+                })
+            })
+        });
+    </script>
 @endsection
