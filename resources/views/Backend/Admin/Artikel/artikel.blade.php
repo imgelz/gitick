@@ -3,7 +3,7 @@
 @section('content')
 @include('Backend.Admin.Artikel.modal')
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="background:transparent">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">

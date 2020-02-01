@@ -11,7 +11,11 @@
 	          <li class="nav-item"><a href="{{url('/about-us')}}" class="nav-link">About</a></li>
               <li class="nav-item"><a href="{{url('/contact')}}" class="nav-link">Contact</a></li>
                 <li class="nav-item"><a class="nav-link">|</a></li>
-                <li class="nav-item"><a href="{{url('/login')}}" class="nav-link">Login</a></li>
+                @if(Auth::check())
+                    <li class="nav-item"><a href="#" class="nav-link">Masuk</a></li>
+                @else
+                    <li class="nav-item"><a href="{{url('/login')}}" class="nav-link">Login</a></li>
+                @endif
 	        </ul>
 	    </div>
     </div>

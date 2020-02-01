@@ -3,13 +3,13 @@
 @section('content')
 @include('Backend.Admin.Kategori.modal')
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="background:transparent">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blog Artikel</h1>
+            <h1>Kategori</h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -65,7 +65,7 @@
 <script src="/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- Sweetalert -->
 {{-- <script> src="/backend/sweetalert/package/dist/sweetalert2.js"</script> --}}
-<script> src="{{asset('backend/sweetalert2/package/dist/sweetalert2.min.js')}}"</script>
+<script> src="/backend/sweetalert2/package/dist/sweetalert2.min.js"</script>
 <script type="text/javascript">
     $(function () {
             $.ajaxSetup({

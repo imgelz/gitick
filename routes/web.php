@@ -26,7 +26,6 @@ Route::get('/about-us', function () {
 Route::get('/contact', function () {
     return view('Frontend.contact');
 });
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -35,9 +34,25 @@ Route::get('/home', 'HomeController@index')->name('home');
 //     return view('Backend.Admin.index');
 // });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', function () {
         return view('Backend.Admin.index');
+    });
+    Route::get('/artikel', 'ArtikelController@index');
+    Route::get('/artikel/{id}/edit', 'ArtikelController@edit');
+    Route::post('/artikel-store', 'ArtikelController@store');
+    Route::get('/kategori','KategoriController@index');
+    Route::post('/kategori-store', 'KategoriController@store');
+    Route::get('/kategori/{id}/edit', 'KategoriController@edit');
+    Route::get('/profile', function () {
+    return view('Backend.Admin.Profil.profil');
+});
+
+});
+
+Route::group(['prefix' => 'penjual'], function () {
+    Route::get('/', function () {
+        return view('Backend.Penjual.index');
     });
     Route::get('/artikel', 'ArtikelController@index');
     Route::get('/artikel/{id}/edit', 'ArtikelController@edit');

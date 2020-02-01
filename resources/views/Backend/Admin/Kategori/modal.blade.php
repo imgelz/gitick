@@ -10,7 +10,7 @@
                     <div class="form-group">
                         <div class="col-lg-12">
                             <label for="name" class="control-label">Nama Kategori</label>
-                            <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Judul Artikel" maxlength="50" autocomplete="off" required>
+                            <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori" maxlength="50" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="form-group">
